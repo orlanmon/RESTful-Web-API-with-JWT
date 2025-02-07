@@ -14,11 +14,7 @@ namespace RESTfulAPIJWT.Controllers
         [HttpGet(Name = "GetProduct"), Authorize(Roles = "Admin")]
         public ProductItem GetProduct (string SerialNumber)
         {
-
-
-#pragma warning disable CS8603 // Possible null reference return.
             return productItems.FirstOrDefault(pi => pi.SerialNumber.Equals(SerialNumber));
-#pragma warning restore CS8603 // Possible null reference return.
 
         }
 
