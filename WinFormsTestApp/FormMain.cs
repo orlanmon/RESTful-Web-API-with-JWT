@@ -53,6 +53,7 @@ namespace WinFormsTestApp
 
                     products.Add(productItem);
 
+                    // Refresh Data Grid View with Product Data
                     this.dataGridView_Products.DataSource = products;
                     
 
@@ -106,6 +107,7 @@ namespace WinFormsTestApp
                             products.Add(product);
                         }
 
+                        // Refresh Data Grid View with Products Data
                         this.dataGridView_Products.DataSource = products;
 
                     }
