@@ -2,6 +2,8 @@
 
 
 
+Secured Jason Web Token RESTful Web API
+
 How to use this demo.
 
 #1 Register a User Name and Password with the system.  This will store the user name and password hash in a database.
