@@ -137,14 +137,13 @@ namespace WinFormsTestApp
                 // Setting Base address.
                 // client.BaseAddress = new Uri("http://localhost:8042");
 
-
                 // Add Accepted response content type
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // Initialization of HttpResponseMessage.
                 HttpResponseMessage response = new HttpResponseMessage();
 
-                // HTTP POST
+                // HTTP POST to Auth Register
                 response = await client.PostAsJsonAsync("http://localhost:8042/api/Auth/register", userDTO).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
@@ -214,7 +213,7 @@ namespace WinFormsTestApp
                 // Initialization of HttpResponseMessage.
                 HttpResponseMessage response = new HttpResponseMessage();
 
-                // HTTP POST
+                // HTTP POST to Auth Login
                 response = await client.PostAsJsonAsync("/api/Auth/Login", userDTO).ConfigureAwait(false);
 
 
@@ -241,10 +240,6 @@ namespace WinFormsTestApp
                         }));
                     }
 
-
-
-
-
                 }
                 else
                 {
@@ -260,8 +255,6 @@ namespace WinFormsTestApp
                         MessageBox.Show(response.StatusCode.ToString(), "Web API Response", buttons, MessageBoxIcon.Error);
 
                     }
-
-
                 }
 
             }
