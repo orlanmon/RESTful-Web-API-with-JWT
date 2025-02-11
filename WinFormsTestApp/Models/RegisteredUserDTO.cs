@@ -1,6 +1,6 @@
 ﻿namespace RESTfulAPIJWT.Models
 {
-    public class User
+    public class RegisteredUserDTO
     {
 
         public string Username { get; set; } = string.Empty;

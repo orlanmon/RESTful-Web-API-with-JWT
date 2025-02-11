@@ -31,10 +31,10 @@ namespace RESTfulWebAPIJWT.Controllers
         }
 
         [HttpPost]
-        public ActionResult<User> Register(UserDTO request)
+        public ActionResult<RegisteredUserDTO> Register(UserDTO request)
         {
 
-            User user = new User();
+            RegisteredUserDTO user = new RegisteredUserDTO();
             Int64 UserID = 0;
 
             try
@@ -66,7 +66,7 @@ namespace RESTfulWebAPIJWT.Controllers
         public ActionResult<string> Login(UserDTO request)
         {
 
-            User user = null;
+            RegisteredUserDTO user = null;
 
             try
             {
@@ -105,7 +105,7 @@ namespace RESTfulWebAPIJWT.Controllers
 
 
         // Generate JWT Token
-        private string CreateToken(User user)
+        private string CreateToken(RegisteredUserDTO user)
         {
            
             try
@@ -160,7 +160,7 @@ namespace RESTfulWebAPIJWT.Controllers
         }
 
 
-        private User GetUser(string username)
+        private RegisteredUserDTO GetUser(string username)
         {
 
             SqlConnection objSQLConnection = null;
@@ -169,7 +169,7 @@ namespace RESTfulWebAPIJWT.Controllers
             string strSQL = string.Empty;
             string strConnection = string.Empty;
             DataSet dataSet = null; 
-            User objUser = null;
+            RegisteredUserDTO objUser = null;
 
             try
             {
@@ -202,7 +202,7 @@ namespace RESTfulWebAPIJWT.Controllers
                     if (dataSet.Tables[0].Rows.Count > 0)
                     {
 
-                        objUser = new User();
+                        objUser = new RegisteredUserDTO();
 
                         objUser.Username = Convert.ToString(dataSet.Tables[0].Rows[0]["UserName"]);
                         objUser.PasswordHash = Convert.ToString(dataSet.Tables[0].Rows[0]["PasswordHash"]);
@@ -230,7 +230,7 @@ namespace RESTfulWebAPIJWT.Controllers
         }
 
 
-        private Int64 AddUser(User user)
+        private Int64 AddUser(RegisteredUserDTO user)
         {
 
             
