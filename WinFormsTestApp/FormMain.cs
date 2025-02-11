@@ -125,7 +125,7 @@ namespace WinFormsTestApp
         {
 
             UserDTO userDTO = new UserDTO();
-            User user = null;
+            RegisteredUserDTO registeredUserDTO = null;
             MessageBoxButtons buttons = MessageBoxButtons.OK;
 
             using (HttpClient client = new HttpClient())
@@ -151,7 +151,7 @@ namespace WinFormsTestApp
                     // Reading Response.
                     string result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    user = JsonConvert.DeserializeObject<User>(result)!;
+                    registeredUserDTO = JsonConvert.DeserializeObject<RegisteredUserDTO>(result)!;
 
 
                     if (!InvokeRequired)

@@ -1,0 +1,56 @@
+<h3>Register Web API User</h3>
+
+<form [formGroup]="myFormRegister" (ngSubmit)="onSubmitRegister(myFormRegister)">
+    <div>
+      <label>
+        Username:
+        <input formControlName="username" placeholder="UserName" required="true">
+      </label>
+    </div>
+    <div>
+      <label>
+        Password:
+        <input formControlName="password" placeholder="Password" required="true">
+      </label>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+
+<h3>Login Web API User</h3>
+
+<table [cellPadding]="10">
+<tr><td>
+<form [formGroup]="myFormLogin" (ngSubmit)="onSubmitLogin(myFormLogin)">
+    <div>
+      <label>
+        Username:
+        <input formControlName="username_login" placeholder="UserName" required="true">
+      </label>
+    </div>
+    <div>
+      <label>
+        Password:
+        <input formControlName="password_login" placeholder="Password" required="true">
+      </label>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</td>
+<td>
+
+    <form [formGroup]="myFormJWT">
+        <div>
+          <label>
+            Jason Web Token:  
+        </label>
+        <br>
+            <textarea rows="5" cols="50" formControlName="jason_web_token" aria-multiline="true" ></textarea>
+          
+        </div>
+    </form>
+
+
+</td>
+</tr>
+</table>

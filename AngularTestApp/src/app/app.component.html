@@ -1,0 +1,60 @@
+<style>
+  body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.toolbar {
+  background-color:black;
+  color:white;
+
+}
+
+.navtoolbar {
+  background-color:gray;
+  color:white;
+}
+
+.basic-container {
+  padding: 50px; 
+  margin-left: 10px;
+}
+
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+li {
+  padding: 10px;
+}
+
+.list-item {
+
+  font-size: smaller;
+  text-decoration: none !important;
+  color:black;
+
+}
+
+
+</style>
+
+<main>
+  <mat-toolbar class="toolbar">Jason Web Token Test Application</mat-toolbar>
+ 
+  <mat-toolbar class="navtoolbar">
+    <ul>
+        <li><a href="/home" class="list-item">Home</a></li>
+        <li><a href="/auth" class="list-item" >Authorize Web API</a></li>
+        <li><a href="/invokewebapi" class="list-item" >Secured Product Web API</a></li>
+    </ul>
+  </mat-toolbar>
+
+</main>
+
+<div class="basic-container" >
+    <router-outlet >    
+    </router-outlet>
+  </div>
