@@ -60,10 +60,6 @@ export class AuthorizeComponent implements OnInit {
 
   }
 
-
-
-
-
 }
 
 

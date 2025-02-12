@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using RESTfulAPIJWT.Services;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
@@ -43,7 +44,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false,   
         };
     });
-    
+
+
+// Add Service to IOC Container for Dependency Injection 
+builder.Services.AddScoped<IService, Service>();
+
 
 var app = builder.Build();
 

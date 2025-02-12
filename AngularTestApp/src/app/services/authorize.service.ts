@@ -48,9 +48,6 @@ export class AuthorizeService {
     {headers}
     );
 
-    // Return JWT Here and assign to session
-
-
   }
 
 
