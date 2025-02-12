@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RESTfulAPIJWT.Models;
+using RESTfulAPIJWT.Services;
 
 namespace RESTfulAPIJWT.Controllers
 {
@@ -20,6 +21,14 @@ namespace RESTfulAPIJWT.Controllers
 
         }
 
+        [HttpGet(Name = "GetServiceName")]
+        public JsonResult GetServiceName(IService service)
+        {
+
+            // Add action logic here
+            return new JsonResult(service.GetServiceName());
+
+        }
 
 
     }
