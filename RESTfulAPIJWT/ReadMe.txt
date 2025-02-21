@@ -270,3 +270,21 @@ public async Task<int> LongRunningOperationAsync() // assume we return an int fr
     return 1;
 }
 
+
+CORS Settings
+
+
+Content-Type, Accept, Access-Control-Allow-Origin, Authorization
+
+
+<configuration>
+	<system.webServer>
+		<httpProtocol>
+			<customHeaders>
+				<add name="Access-Control-Allow-Origin" value="*"/>
+				<add name="Access-Control-Allow-Methods" value="GET,PUT,POST,DELETE,OPTIONS"/>
+				<add name="Access-Control-Allow-Headers" value="Content-Type"/>
+			</customHeaders>
+		</httpProtocol>
+	</system.webServer>
+</configuration>

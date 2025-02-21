@@ -2,53 +2,27 @@ import { Injectable } from '@angular/core';
 import { User } from '../shared/models/User';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import HttpService from './http.service';
+import { RegisteredUser } from '../shared/models/RegisteredUser';
+import { JWT } from '../shared/models/JWT';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizeService {
+  constructor(private httpService: HttpService) { }
 
-  objHttp: HttpClient;
+  public register(username: string, password: string): Observable<RegisteredUser> {
+    const user: User = new User(username, password);
 
-  constructor(private http: HttpClient) { 
-
-    this.objHttp = http;
-
+    const result = this.httpService.post<RegisteredUser>("/auth/register", user);
+    return result;
   }
 
-  register( username: string, password: string  ) : Observable<any> {
+  public login(username: string, password: string): Observable<JWT> {
+    const user: User = new User(username, password);
 
-    // Content Type Recevied
-    const headers = { 'Content-Type': 'application/json' };
-    
-    let url =  "http://localhost:8042/api/Auth/register";
-    
-    return this.http.post(url,
-    {
-    "username" : username,
-    "password" : password
-    },
-    {headers}
-    );
-
+    const result = this.httpService.post<JWT>("/auth/login", user);
+    return result;
   }
-
-  login( username: string, password: string  ) : Observable<any> {
-
-    // Content Type Recevied
-    const headers = { 'Content-Type': 'application/json' };
-    
-    let url =  "http://localhost:8042/api/Auth/login";
-    
-    return this.http.post(url,
-    {
-    "username" : username,
-    "password" : password
-    },
-    {headers}
-    );
-
-  }
-
-
 }

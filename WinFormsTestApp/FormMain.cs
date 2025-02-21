@@ -193,7 +193,8 @@ namespace WinFormsTestApp
         private async void button_invoke_login_Click(object sender, EventArgs e)
         {
             UserDTO userDTO = new UserDTO();
-            string JWT = string.Empty;
+            JWTDTO jWTDTO = null;
+
             MessageBoxButtons buttons = MessageBoxButtons.OK;
 
 
@@ -222,21 +223,21 @@ namespace WinFormsTestApp
                 if (response.IsSuccessStatusCode)
                 {
                     // Reading Response.
-                    JWT = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    JWT = JsonConvert.DeserializeObject<string>(JWT);
-
+                    
+                    jWTDTO = JsonConvert.DeserializeObject<JWTDTO>(result);
 
 
                     if (!InvokeRequired)
                     {
-                        this.textBox_JSONTOKEN.Text = JWT;
+                        this.textBox_JSONTOKEN.Text = jWTDTO.jSONWebToken;
                     }
                     else
                     {
                         Invoke(new Action(() =>
                         {
-                            this.textBox_JSONTOKEN.Text = JWT;
+                            this.textBox_JSONTOKEN.Text = jWTDTO.jSONWebToken;
                         }));
                     }
 

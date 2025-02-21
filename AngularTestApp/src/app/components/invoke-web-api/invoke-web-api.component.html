@@ -1,11 +1,51 @@
 <h3>Invoke Secured Web API</h3>
 
 
+<div class="row">
+    <div class="col-lg-3">
 
+<button type="submit"  (click)="invoke_get_product($event)" class="btn btn-primary">Get Product</button>
 
-<button type="submit"  (click)="invoke_get_product($event)">Get Product</button>
+    </div>
+    
+    <div class="col-lg-3" >
+    
+        <div>
+          <label>
+            Response:  
+        </label>
+        <br>
+            <textarea rows="5" cols="50" id="response_get_product" class="form-control" [ngModel]="getProductResponse" ></textarea>
+        </div>
+    
+    </div>
+    
+    <div class="col-lg-6" ></div>
+    
+</div>
 
 <br>
 
-<button type="submit"  (click)="invoke_get_products($event)">Get Products</button>
+<div class="row">
+    <div class="col-lg-3">
 
+<button type="submit"  (click)="invoke_get_products($event)" class="btn btn-primary" >Get Products</button>
+
+</div>
+
+<div class="col-lg-3" >
+    
+    <div>
+      <label>
+        Response:  
+    </label>
+    <br>
+        <textarea rows="5" cols="50" id="response_get_products" class="form-control" [ngModel]="getProductsResponse" ></textarea>
+    </div>
+
+</div>
+
+<div class="col-lg-6" ></div>
+
+
+</div>
