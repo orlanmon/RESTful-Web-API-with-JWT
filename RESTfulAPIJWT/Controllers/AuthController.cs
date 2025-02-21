@@ -63,10 +63,12 @@ namespace RESTfulWebAPIJWT.Controllers
         }
 
         [HttpPost]
-        public ActionResult<string> Login(UserDTO request)
+        public ActionResult<JWTDTO> Login(UserDTO request)
         {
 
             RegisteredUserDTO user = null;
+            JWTDTO jasonWebToken = new JWTDTO();
+
 
             try
             {
@@ -88,9 +90,10 @@ namespace RESTfulWebAPIJWT.Controllers
                     return BadRequest("Wrong Password");
                 }
 
-                string token = CreateToken(user);
 
-                return Ok(token);
+                jasonWebToken.jSONWebToken = CreateToken(user);
+
+                return Ok(jasonWebToken);
 
             }
             catch (Exception ex)
