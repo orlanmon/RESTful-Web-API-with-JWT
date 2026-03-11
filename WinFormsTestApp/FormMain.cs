@@ -32,7 +32,7 @@ namespace WinFormsTestApp
             using (HttpClient client = new HttpClient())
             {
 
-                sURL = "http://localhost:8042/api/Product/GetProduct";
+                sURL = "http://localhost/JWTWebAPI/api/Product/GetProduct";
 
                 client.BaseAddress = new Uri(sURL);
                 urlParameters = "?SerialNumber=12345";
@@ -83,7 +83,7 @@ namespace WinFormsTestApp
             using (HttpClient client = new HttpClient())
             {
 
-                sURL = "http://localhost:8042/api/Product/GetAllProducts";
+                sURL = "http://localhost/JWTWebAPI/api/Product/GetAllProducts";
 
                 // Add Accepted response content type
                 client.DefaultRequestHeaders.Accept.Add(
@@ -135,7 +135,7 @@ namespace WinFormsTestApp
                 userDTO.Password = this.textBox_register_password.Text;
 
                 // Setting Base address.
-                // client.BaseAddress = new Uri("http://localhost:8042");
+                // client.BaseAddress = new Uri("http://localhost/JWTWebAPI");
 
                 // Add Accepted response content type
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -144,7 +144,7 @@ namespace WinFormsTestApp
                 HttpResponseMessage response = new HttpResponseMessage();
 
                 // HTTP POST to Auth Register
-                response = await client.PostAsJsonAsync("http://localhost:8042/api/Auth/register", userDTO).ConfigureAwait(false);
+                response = await client.PostAsJsonAsync("http://localhost/JWTWebAPI/api/Auth/register", userDTO).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -205,7 +205,7 @@ namespace WinFormsTestApp
                 userDTO.Password = this.textBox_login_password.Text;
 
                 // Setting Base address.
-                client.BaseAddress = new Uri("http://localhost:8042");
+                //client.BaseAddress = new Uri("http://localhost/JWTWebAPI");
 
                 // Add Accepted response content type
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -215,7 +215,7 @@ namespace WinFormsTestApp
                 HttpResponseMessage response = new HttpResponseMessage();
 
                 // HTTP POST to Auth Login
-                response = await client.PostAsJsonAsync("/api/Auth/Login", userDTO).ConfigureAwait(false);
+                response = await client.PostAsJsonAsync("http://localhost/JWTWebAPI/api/Auth/Login", userDTO).ConfigureAwait(false);
 
 
 
