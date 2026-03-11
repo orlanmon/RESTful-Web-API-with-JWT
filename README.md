@@ -1,4 +1,4 @@
-Secured Jason Web Token RESTful Web API
+Secured JSON Web Token RESTful Web API
 
 How to use this demo.
 
