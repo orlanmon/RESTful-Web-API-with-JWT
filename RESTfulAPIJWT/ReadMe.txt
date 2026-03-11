@@ -6,10 +6,13 @@ Secured Jason Web Token RESTful Web API
 
 How to use this demo.
 
-#1 Register a User Name and Password with the system.  This will store the user name and password hash in a database.
-#2 Login by providing a registered User Name and Password.   User name and Password will be verified against database.   
+#1 Register a User Name and Password with the system.  This will store the user name and password hash in a database, pass back the Password Hash.
+#2 Login by providing a registered User Name and Password.   User name and Password will be verified against database, reverse hash comparison on password.   
    JWT will then be passed back to be used in subsequent Web API Calls.
-#3 Make Web API Calls passing JWT in Header of Web API Call.
+
+   Verify JWT with https://www.jwt.io/
+
+#3 Now Make Web API Calls passing JWT in Header of Web API Call.
 
 
 // General Notes
@@ -31,6 +34,12 @@ Also contains fields like exp (expire date),   iat (time jwt created), etc
 
 Signature: A string that is generated via a cryptographic algorithm that can be used to verify the integrity of the JSON payload.
 Base64URLSafe(HMACHSHA256(<header>, <payload>, <secret key>))
+
+
+
+Issuer Signing Key
+
+TokenSecretKey = Secret Key    User   JWTSecrets Online to Generate Token Secret
 
 
 
@@ -288,3 +297,8 @@ Content-Type, Accept, Access-Control-Allow-Origin, Authorization
 		</httpProtocol>
 	</system.webServer>
 </configuration>
+
+
+
+/** Azure Realted Notes **/
+
