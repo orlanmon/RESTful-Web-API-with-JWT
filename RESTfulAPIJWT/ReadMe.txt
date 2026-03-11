@@ -12,7 +12,7 @@ How to use this demo.
 
    Verify JWT with https://www.jwt.io/
 
-#3 Now Make Web API Calls passing JWT in Header of Web API Call.
+#3 Now Make Web API Calls passing JWT in the Authorization Header of each Web API Call.
 
 
 // General Notes
