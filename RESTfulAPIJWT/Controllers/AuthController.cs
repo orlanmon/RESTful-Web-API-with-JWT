@@ -117,6 +117,9 @@ namespace RESTfulWebAPIJWT.Controllers
 
                 // JWT Claims for Payload
 
+
+                // First Claim is User Name and Password Hash
+                // Second Is Role
                 List<Claim> claims = new List<Claim>
             {
 
@@ -125,7 +128,9 @@ namespace RESTfulWebAPIJWT.Controllers
 
             };
 
-                // Create Issuer Signing Security Key From Secret Key  - used in Signature segment of JWT Token
+                // Secret Key can be generated from online service JWTSecrets or Other Secret Key Generator.
+
+                // Create Issuer Signing Security Key From Secret Key  - used in Signature segment of JWT Token Creation
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:TokenSecretKey").Value!));
 
