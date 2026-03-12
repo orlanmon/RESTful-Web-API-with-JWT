@@ -50,6 +50,57 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<IService, Service>();
 
 
+// Conifgure CORS Settings
+
+builder.Services.AddCors(options =>
+            {
+            // Configure SpecificOriginsPolicy
+            var specificOriginsSection = builder.Configuration.GetSection("CorsSettings:SpecificOriginsPolicy");
+            if (specificOriginsSection.Exists())
+            {
+                var allowedOrigins = specificOriginsSection["AllowedOrigins"]?.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var allowedHeaders = specificOriginsSection["AllowedHeaders"]?.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var allowedMethods = specificOriginsSection["AllowedMethods"]?.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var allowCredentials = specificOriginsSection.GetValue<bool>("AllowCredentials");
+
+                options.AddPolicy("SpecificOriginsPolicy", policy =>
+                {
+                    if (allowedOrigins != null && allowedOrigins.Length > 0)
+                    {
+                        policy.WithOrigins(allowedOrigins);
+                    }
+                    if (allowedHeaders != null && allowedHeaders.Length > 0)
+                    {
+                        policy.WithHeaders(allowedHeaders);
+                    }
+                    if (allowedMethods != null && allowedMethods.Length > 0)
+                    {
+                        policy.WithMethods(allowedMethods);
+                    }
+                    if (allowCredentials)
+                    {
+                        policy.AllowCredentials();
+                    }
+                });
+            }
+
+                // Configure AnyOriginPolicy (if needed)
+                /*
+                var anyOriginSection = builder.Configuration.GetSection("CorsSettings:AnyOriginPolicy");
+                if (anyOriginSection.Exists() && anyOriginSection.GetValue<bool>("AllowAnyOrigin"))
+                {
+                    options.AddPolicy("AnyOriginPolicy", policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
+                }
+                */
+
+            });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
