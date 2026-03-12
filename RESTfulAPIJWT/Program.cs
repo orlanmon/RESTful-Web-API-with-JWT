@@ -52,7 +52,7 @@ builder.Services.AddScoped<IService, Service>();
 
 // Conifgure CORS Settings
 
-builder.Services.AddCors(options =>
+    builder.Services.AddCors(options =>
             {
             // Configure SpecificOriginsPolicy
             var specificOriginsSection = builder.Configuration.GetSection("CorsSettings:SpecificOriginsPolicy");
@@ -82,7 +82,7 @@ builder.Services.AddCors(options =>
                         policy.AllowCredentials();
                     }
                 });
-            }
+            };
 
                 // Configure AnyOriginPolicy (if needed)
                 /*
@@ -120,5 +120,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Use CORS Policy
+app.UseCors("SpecificOriginsPolicy");
+
 
 app.Run();
