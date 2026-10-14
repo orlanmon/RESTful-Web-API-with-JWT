@@ -1,4 +1,4 @@
-Secured JSON Web Token RESTful Web API
+ASP.NET CORE MVC RESTful Web API secured with JWT and .NET CORE WinForms Test Client
 
 How to use this demo.
 
